@@ -1,0 +1,55 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      commit_results:
+        description: Commit results/ and models/ back to main
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+jobs:
+  study:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      PYTHONPATH: src
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: "4.4"
+      - run: pip install -r requirements.txt
+      - name: Unit tests
+        run: pytest -q
+      - name: Python study (models, explainability, segments, forecast, drift)
+        run: python -m credit_risk.evaluate
+      - name: R benchmark (glm)
+        run: Rscript r/glm_benchmark.R
+      - name: Compare R with Python
+        run: python -m credit_risk.compare_r
+      - name: Quality gate (minimum AUC, R parity)
+        run: python -m credit_risk.gate
+      - name: Scoring demo
+        run: python -m credit_risk.score --example | tee results/demo_output.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: results
+          path: results/
+      - name: Commit results
+        if: github.event_name == 'workflow_dispatch' && inputs.commit_results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add results models
+          git commit -m "results: full study run on GitHub Actions [skip ci]" || echo "no changes"
+          git push
