@@ -1,0 +1,54 @@
+{
+  "thresholds": {
+    "amber": 0.1,
+    "red": 0.25
+  },
+  "calendar_drift_real": {
+    "reference": "holdout customers, Apr-Jun 2005 features",
+    "current": "same customers, Jul-Sep 2005 features",
+    "model": "3-month-window logit trained on Jul-Sep features of the training set",
+    "decision": {
+      "alert": "amber",
+      "score_psi": 0.04376788401959963,
+      "max_feature_psi": 0.17299489542505586,
+      "action": "investigate"
+    },
+    "worst_feature": "PAY_AMT1",
+    "feature_psi": {
+      "PAY_0": 0.1041434640322809,
+      "PAY_2": 0.02618809141015514,
+      "PAY_3": 0.018832942224253718,
+      "BILL_AMT1": 0.03653214633245476,
+      "BILL_AMT2": 0.027007424228576354,
+      "BILL_AMT3": 0.02321995284338266,
+      "PAY_AMT1": 0.17299489542505586,
+      "PAY_AMT2": 0.12653878699624233,
+      "PAY_AMT3": 0.03126023389775962
+    },
+    "auc_on_current_features": 0.7173109353053213,
+    "auc_on_3_month_stale_features": 0.6340619748491554,
+    "note": "PAY_5 and PAY_6 never take value 1 in the source data, which inflates PSI on PAY fields."
+  },
+  "feedback_loop_simulated": {
+    "simulated": true,
+    "scenario": "amounts divided by 1000, PAY_0 + 2 (clipped at 8), applied to the real holdout",
+    "control_clean_holdout": {
+      "alert": "green",
+      "score_psi": 0.008188911900315758,
+      "max_feature_psi": 0.002750446636075366,
+      "action": "none"
+    },
+    "drifted_batch": {
+      "alert": "red",
+      "score_psi": 6.293370991207512,
+      "max_feature_psi": 10.838825193458964,
+      "action": "retrain"
+    },
+    "worst_feature": "LIMIT_BAL",
+    "n_labelled_for_retrain": 4500,
+    "n_evaluated": 4500,
+    "auc_later_clean_data": 0.8057220574153696,
+    "auc_later_drifted_no_action": 0.7029054150785753,
+    "auc_later_drifted_after_retrain": 0.7926428930174048
+  }
+}

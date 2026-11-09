@@ -1,0 +1,97 @@
+{
+  "champion": "random_forest",
+  "permutation_importance_auc_drop": [
+    {
+      "feature": "PAY_0",
+      "auc_drop": 0.06745845002972028,
+      "std": 0.005595290715970655
+    },
+    {
+      "feature": "PAY_2",
+      "auc_drop": 0.015174726612486667,
+      "std": 0.0032334876253484203
+    },
+    {
+      "feature": "LIMIT_BAL",
+      "auc_drop": 0.013973132360308328,
+      "std": 0.002504541362385981
+    },
+    {
+      "feature": "BILL_AMT1",
+      "auc_drop": 0.009311982328771085,
+      "std": 0.0014144863295176575
+    },
+    {
+      "feature": "PAY_AMT1",
+      "auc_drop": 0.009006538458543534,
+      "std": 0.0012593474656055132
+    },
+    {
+      "feature": "PAY_3",
+      "auc_drop": 0.006543779639151803,
+      "std": 0.0023514513876422747
+    },
+    {
+      "feature": "PAY_AMT2",
+      "auc_drop": 0.003919181641441205,
+      "std": 0.002421190750461366
+    },
+    {
+      "feature": "PAY_6",
+      "auc_drop": 0.0035698062861608372,
+      "std": 0.0031503713659250835
+    },
+    {
+      "feature": "BILL_AMT5",
+      "auc_drop": 0.002945940263562985,
+      "std": 0.0009009993170781281
+    },
+    {
+      "feature": "PAY_AMT3",
+      "auc_drop": 0.0028224519089756093,
+      "std": 0.0021103535603173894
+    }
+  ],
+  "xgboost_treeshap_global": [
+    {
+      "feature": "num__PAY_0",
+      "mean_abs_shap_log_odds": 0.4697110056877136
+    },
+    {
+      "feature": "num__LIMIT_BAL",
+      "mean_abs_shap_log_odds": 0.1828731894493103
+    },
+    {
+      "feature": "num__PAY_2",
+      "mean_abs_shap_log_odds": 0.1330476552248001
+    },
+    {
+      "feature": "num__BILL_AMT1",
+      "mean_abs_shap_log_odds": 0.11117345839738846
+    },
+    {
+      "feature": "num__PAY_AMT2",
+      "mean_abs_shap_log_odds": 0.1037689819931984
+    },
+    {
+      "feature": "num__PAY_AMT3",
+      "mean_abs_shap_log_odds": 0.0976075753569603
+    },
+    {
+      "feature": "num__PAY_3",
+      "mean_abs_shap_log_odds": 0.08274471759796143
+    },
+    {
+      "feature": "num__PAY_AMT1",
+      "mean_abs_shap_log_odds": 0.07540849596261978
+    },
+    {
+      "feature": "num__PAY_AMT6",
+      "mean_abs_shap_log_odds": 0.06537287682294846
+    },
+    {
+      "feature": "num__PAY_5",
+      "mean_abs_shap_log_odds": 0.05774534121155739
+    }
+  ]
+}

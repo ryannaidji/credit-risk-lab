@@ -1,0 +1,43 @@
+{
+  "features": [
+    "log_limit",
+    "utilization",
+    "pay_ratio",
+    "months_late",
+    "max_delay"
+  ],
+  "fit_on": "train only",
+  "silhouette_by_k": {
+    "2": 0.3814935894965651,
+    "3": 0.34249895073047415,
+    "4": 0.3154108121590845,
+    "5": 0.3172918289534512,
+    "6": 0.3226600119594,
+    "7": 0.31071019472692296,
+    "8": 0.32120837646665656
+  },
+  "chosen_k": 2,
+  "seed_stability_ari": 1.0,
+  "holdout_profile": [
+    {
+      "segment": 0,
+      "holdout_share": 0.7592222222222222,
+      "holdout_default_rate": 0.139031172252305,
+      "log_limit": 11.845792431952423,
+      "utilization": 0.300434805290771,
+      "pay_ratio": 0.4427137021798715,
+      "months_late": 0.13156739353139177,
+      "max_delay": 0.16859358993121615
+    },
+    {
+      "segment": 1,
+      "holdout_share": 0.24077777777777779,
+      "holdout_default_rate": 0.48038763267189666,
+      "log_limit": 11.08646990750333,
+      "utilization": 0.6039160603577199,
+      "pay_ratio": 0.09710630379609238,
+      "months_late": 3.001384402399631,
+      "max_delay": 2.2916474388555605
+    }
+  ]
+}

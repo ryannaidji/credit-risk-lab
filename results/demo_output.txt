@@ -1,0 +1,22 @@
+{
+  "model": "random_forest",
+  "pd": 0.5747,
+  "band": "high",
+  "raises_risk_most": [
+    {
+      "feature": "PAY_0",
+      "value": 2,
+      "pd_vs_median": 0.1676
+    },
+    {
+      "feature": "BILL_AMT6",
+      "value": 42000,
+      "pd_vs_median": 0.027
+    },
+    {
+      "feature": "MARRIAGE",
+      "value": 1,
+      "pd_vs_median": 0.0137
+    }
+  ]
+}
